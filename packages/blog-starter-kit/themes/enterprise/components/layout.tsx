@@ -12,8 +12,10 @@ export const Layout = ({ children }: Props) => {
 		<>
 			<Meta />
 			<Scripts />
-			<div className="min-h-screen px-8 bg-[#fcf9f6] dark:bg-neutral-950">
-				<main>{children}</main>
+			<div className="min-h-screen px-5 py-5  bg-[#fcf9f6] dark:bg-neutral-950">
+				<div className='px-3 border rounded-md border-slate-800'>
+					<main>{children}</main>
+				</div>
 			</div>
 			<Analytics />
 			<Integrations />

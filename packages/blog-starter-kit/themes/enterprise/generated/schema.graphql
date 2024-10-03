@@ -1282,6 +1282,15 @@ type DocsCustomPage implements Node {
   visibility: DocumentationSidebarItemVisibility!
 }
 
+type DocsCustomPageConnection implements PageConnection {
+  """A list docs custom pages"""
+  nodes: [DocsCustomPage!]!
+  """Information to aid in pagination."""
+  pageInfo: OffsetPageInfo!
+  """Total number of docs custom pages."""
+  totalDocuments: Int!
+}
+
 type DocsProjectInvitedMembers {
   email: String!
   role: DocumentationMemberRole!
@@ -1493,6 +1502,18 @@ type DocumentationProject implements Node {
   analytics: DocumentationProjectAnalytics!
   appearance: DocumentationProjectAppearance!
   createdAt: DateTime!
+  """Returns a custom page with the given slug."""
+  customPage(
+    """The slug of the docs custom page to retrieve."""
+    slug: String!
+  ): DocsCustomPage
+  """Returns a list of custom pages belonging to the project."""
+  customPages(
+    """The page number that should be returned."""
+    page: Int!
+    """The number of custom pages to return in a single page."""
+    pageSize: Int!
+  ): DocsCustomPageConnection!
   defaultGuide: DocumentationGuideItem
   description: String
   domain: DocumentationProjectDomainSettings

@@ -7,7 +7,7 @@ export const Footer = () => {
 	const { publication } = useAppContext();
 	const PUBLICATION_LOGO = publication.preferences.logo;
 	return (
-		<footer className="py-20 border-t border-black dark:border-neutral-800 ">
+		<footer className="py-20">
 			<Container className="px-5">
 				{PUBLICATION_LOGO ? (
 					<div className="flex flex-row justify-center w-full mb-20">
@@ -20,11 +20,11 @@ export const Footer = () => {
 						</Link>
 					</div>
 				) : (
-					<p className="mb-20 text-xl font-semibold text-center text-slate-900 dark:text-slate-50 md:text-4xl">
-						{publication.title}
+					<p className="mb-20 text-sm font-semibold text-center text-slate-900 dark:text-slate-50">
+						© 2024 HRS8
 					</p>
 				)}
-				<div className="grid w-full grid-cols-3 gap-5 md:grid-cols-6 lg:grid-cols-5">
+				<div className="grid hidden w-full grid-cols-3 gap-5 md:grid-cols-6 lg:grid-cols-5">
 					<div className="grid grid-cols-4 col-span-1 gap-5 md:col-span-4 lg:col-span-3">
 						<div className="col-span-full md:col-span-2 lg:col-span-1">
 							<p className="mb-2 font-semibold text-slate-600 dark:text-neutral-200">

@@ -1286,6 +1286,16 @@ export type DocsCustomPage = Node & {
   visibility: DocumentationSidebarItemVisibility;
 };
 
+export type DocsCustomPageConnection = PageConnection & {
+  __typename?: 'DocsCustomPageConnection';
+  /** A list docs custom pages */
+  nodes: Array<DocsCustomPage>;
+  /** Information to aid in pagination. */
+  pageInfo: OffsetPageInfo;
+  /** Total number of docs custom pages. */
+  totalDocuments: Scalars['Int']['output'];
+};
+
 export type DocsProjectInvitedMembers = {
   __typename?: 'DocsProjectInvitedMembers';
   email: Scalars['String']['output'];
@@ -1511,6 +1521,10 @@ export type DocumentationProject = Node & {
   analytics: DocumentationProjectAnalytics;
   appearance: DocumentationProjectAppearance;
   createdAt: Scalars['DateTime']['output'];
+  /** Returns a custom page with the given slug. */
+  customPage?: Maybe<DocsCustomPage>;
+  /** Returns a list of custom pages belonging to the project. */
+  customPages: DocsCustomPageConnection;
   defaultGuide?: Maybe<DocumentationGuideItem>;
   description?: Maybe<Scalars['String']['output']>;
   domain?: Maybe<DocumentationProjectDomainSettings>;
@@ -1540,6 +1554,17 @@ export type DocumentationProject = Node & {
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
   /** URL of the documentation project. */
   url: Scalars['String']['output'];
+};
+
+
+export type DocumentationProjectCustomPageArgs = {
+  slug: Scalars['String']['input'];
+};
+
+
+export type DocumentationProjectCustomPagesArgs = {
+  page: Scalars['Int']['input'];
+  pageSize: Scalars['Int']['input'];
 };
 
 
