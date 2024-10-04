@@ -77,7 +77,7 @@ export const Header = () => {
 	);
 
 	return (
-		<header className="py-5 bg-[#fcf9f6] border-b border-black dark:border-neutral-800 dark:bg-neutral-900">
+		<header className="py-5 bg-[#fcf9f6] border-b border-black dark:border-neutral-800 dark:bg-neutral-950">
 			<Container className="flex items-center justify-between px-5">
 				<div className="flex items-center justify-center w-full">
 						<PublicationLogo />

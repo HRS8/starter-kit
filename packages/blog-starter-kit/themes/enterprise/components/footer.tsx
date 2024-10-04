@@ -1,29 +1,54 @@
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Container } from './container';
 import { useAppContext } from './contexts/appContext';
 import { SocialLinks } from './social-links';
 
 export const Footer = () => {
-	const { publication } = useAppContext();
-	const PUBLICATION_LOGO = publication.preferences.logo;
-	return (
-		<footer className="py-20">
-			<Container className="px-5">
-				{PUBLICATION_LOGO ? (
-					<div className="flex flex-row justify-center w-full mb-20">
-						<Link
-							href={'/'}
-							aria-label={`${publication.title} home page`}
-							className="flex flex-row items-center gap-5"
-						>
-							<img className="block w-40" src={PUBLICATION_LOGO} alt={publication.title} />
-						</Link>
-					</div>
-				) : (
-					<p className="mb-20 text-sm font-semibold text-center text-slate-900 dark:text-slate-50">
-						© 2024 HRS8
-					</p>
-				)}
+    const { publication } = useAppContext();
+    const PUBLICATION_LOGO = publication.preferences.logo;
+
+    const [isDarkMode, setIsDarkMode] = useState(false);
+
+    const toggleDarkMode = () => {
+        setIsDarkMode(!isDarkMode);
+    };
+
+    useEffect(() => {
+        if (isDarkMode) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    }, [isDarkMode]);
+
+    return (
+        <footer className="py-20">
+            <Container className="px-5">
+                {PUBLICATION_LOGO ? (
+                    <div className="flex flex-row justify-center w-full mb-20">
+                        <Link
+                            href={'/'}
+                            aria-label={`${publication.title} home page`}
+                            className="flex flex-row items-center gap-5"
+                        >
+                            <img className="block w-40" src={PUBLICATION_LOGO} alt={publication.title} />
+                        </Link>
+                    </div>
+                ) : (
+                    <p className="mb-5 text-sm font-semibold text-center text-slate-900 dark:text-slate-50">
+                        © Made wit ❤️ by yet another noob.
+                    </p>
+                )}
+                <div className="flex justify-center mb-5">
+                    <button
+                        onClick={toggleDarkMode}
+                        className="px-4 py-2 font-semibold text-white bg-blue-500 rounded dark:bg-blue-700"
+                    >
+                        Toggle Dark Mode
+                    </button>
+                </div>
+                <div><SocialLinks/></div>
 				<div className="grid hidden w-full grid-cols-3 gap-5 md:grid-cols-6 lg:grid-cols-5">
 					<div className="grid grid-cols-4 col-span-1 gap-5 md:col-span-4 lg:col-span-3">
 						<div className="col-span-full md:col-span-2 lg:col-span-1">
